@@ -1,0 +1,160 @@
+.sidebar__header {
+  color: #b1b3b5;
+  display: flex;
+  background-color: #2a2f32;
+  height: 45px;
+  border-right: 1px solid #30373b;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 9px; */
+  padding: 10px 10px 10px 15px;
+}
+
+.sidebar {
+  flex: 0.35;
+  height: 90vh;
+}
+.sidebar__headerRight {
+  color: #b1b3b5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 10vw;
+}
+
+.sidebar__headerRight .MuiSvgIcon-root {
+  color: #b1b3b5;
+  font-size: 22px;
+  margin-right: 1vw;
+}
+
+.sidebar__search {
+  color: #b1b3b5;
+  display: flex;
+  background-color: #131c21;
+  height: 35px;
+
+  align-items: center;
+  /* justify-content: space-between; */
+  padding: 9px;
+  border-bottom: 1px solid #30373b;
+  border-right: 1px solid #30373b;
+}
+
+.sidebar__searchContainer {
+  display: flex;
+  background-color: #323739;
+  width: 100%;
+  height: 75%;
+  border-radius: 20px;
+  padding: 3px;
+  align-items: center;
+  align-content: center;
+}
+
+.sidebar__searchContainer .MuiSvgIcon-root {
+  font-size: 1.2em;
+  padding-left: 12px;
+  padding-right: 25px;
+  color: #5a5e61;
+}
+
+.sidebar__searchContainer > input {
+  background: #323739;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: 600;
+  height: 100%;
+}
+
+.sidebar__contacts {
+  height: 77vh;
+  overflow-y: overlay;
+  overflow-x: clip;
+  /* overflow: hidden; */
+  border-right: 1px solid #30373b;
+  background: #131c21;
+}
+
+.contact_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  height: 60px;
+  background-color: #131c21;
+  align-items: center;
+  padding: 10px 10px 10px 15px;
+  border: 5px 1px 0 0 solid #30373b;
+  color: white;
+  border-bottom: 1px solid #30373b;
+}
+
+.contact_container:hover {
+  cursor: pointer;
+  background: #2d3134;
+}
+
+.sidebar__contacts .MuiSvgIcon-root {
+  font-size: 2em !important;
+}
+.contact__info {
+  padding: 15px;
+  flex: 1;
+}
+
+.contact__name {
+  font-size: large;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px;
+}
+.last__msg {
+  font-size: small;
+  color: #cbcccd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 116px;
+}
+
+.lastMsg__time {
+  font-size: small;
+  padding: 0px 15px 20px 18px;
+}
+
+.unread__count {
+  height: 20px;
+  width: 20px;
+  background: #00af9c;
+  border-radius: 50%;
+  padding: 0 2px 0 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-small;
+}
+
+/* width */
+.sidebar__contacts:-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.sidebar__contacts:-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px #131c21; */
+  /* border-radius: 10px; */
+}
+
+/* Handle */
+.sidebar__contacts:-webkit-scrollbar-thumb {
+  background: #394045;
+  /* border-radius: 10px; */
+}
+
+/* Handle on hover */
+.sidebar__contacts:-webkit-scrollbar-thumb:hover {
+  background: #394045;
+}
