@@ -7,9 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../Redux/Action'
 import { bindActionCreators } from 'redux';
 import { makeStyles } from '@material-ui/styles'
-import db from '../../config/firebase'
 import moment from 'moment'
-import { findDOMNode } from 'react-dom';
 const useStyles = makeStyles({
     large: {
         width: '45px',
@@ -32,7 +30,7 @@ function Sidebar() {
     if (foundIndex > -1) {
         users.splice(foundIndex, 1)
     }
-    console.log('loggedInUser', loggedInUser)
+    //console.log('loggedInUser', loggedInUser)
     const handleContactSelect = (selectedUserId, data) => {
         handleSelectedContact(data)
         setSelectedUserId(selectedUserId)

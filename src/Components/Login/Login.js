@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, } from 'react'
 import { Button } from '@material-ui/core'
 import './Login.css'
 import firebase from 'firebase'
@@ -12,7 +12,7 @@ function Login() {
     const savedUsers = useSelector(state => state.savedUsers)
 
 
-    console.log("savedUsers", savedUsers)
+    //console.log("savedUsers", savedUsers)
     useEffect(() => {
         const unsubscribe = db.collection('users')
             .onSnapshot((snapshot) =>
@@ -41,9 +41,9 @@ function Login() {
     }, [])
 
     const checkIfUserExists = (email, newUser) => {
-        console.log(typeof savedUsers.data, savedUsers.data.length)
+        //console.log(typeof savedUsers.data, savedUsers.data.length)
         let matchedUser = savedUsers.data.find(user => user.data.email === email)
-        console.log(matchedUser);
+        //console.log(matchedUser);
         if (matchedUser) {
             return [true, matchedUser.data]
         } else {
@@ -52,7 +52,7 @@ function Login() {
     }
     const signIn = () => {
         firebase.auth().signInWithPopup(provider).then(result => {
-            // console.log(result);
+            // //console.log(result);
 
             let [isUserExists, existingUser] = checkIfUserExists(result.user?.email, result.user)
             if (isUserExists) {
@@ -69,13 +69,13 @@ function Login() {
                     timestamp: new Date()
                 }).then(() => {
 
-                    alert('doc saved successfully.')
+                    // alert('doc saved successfully.')
                 }).catch(error => {
-                    console.log(error)
+                    //console.log(error)
                 })
             }
         }).catch(error => {
-            console.log(error)
+            //console.log(error)
         })
     }
     return (

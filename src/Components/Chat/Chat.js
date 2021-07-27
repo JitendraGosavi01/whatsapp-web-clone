@@ -34,7 +34,7 @@ function Chat() {
     const [isTyping, setIsTyping] = useState(false)
     const [typedMessage, setTypedMessage] = useState('')
     // const [messages, setMessages] = useState([])
-    console.log("loggedInUser", loggedInUser, 'selectedContact', selectedContact)
+    //console.log("loggedInUser", loggedInUser, 'selectedContact', selectedContact)
 
     useEffect(() => {
         let unsubscribe = db.collection('messages').orderBy('timestamp', 'asc')
@@ -49,7 +49,7 @@ function Chat() {
         }
     }, [])
 
-    console.log("messages=>", messages)
+    //console.log("messages=>", messages)
     const loadChatHeader = () => {
         let msgFromSelectedContact = messages?.filter(fi => fi.message?.from === selectedContact?.email)
         let lastSeen = msgFromSelectedContact.length > 0 ? moment(msgFromSelectedContact[msgFromSelectedContact.length - 1].message?.timestamp.toDate()).calendar().toLowerCase() : ''
@@ -60,7 +60,7 @@ function Chat() {
                     {selectedContact?.contactName !== '' ? selectedContact?.contactName : selectedContact?.phoneNumber}
                 </div>
                 <div className="chat__header__last__seen">
-                    {`last seen ${lastSeen}` || 'last seen'}
+                    {(lastSeen && `last seen ${lastSeen}`) || ''}
                 </div>
             </div>
             <div className="chat__headerRight">
@@ -87,7 +87,7 @@ function Chat() {
 
     const handleInputText = (event) => {
         event.preventDefault()
-        console.log("typedMessage==> ", loggedInUser, selectedContact)
+        //console.log("typedMessage==> ", loggedInUser, selectedContact)
         let composedData = {
             from: loggedInUser.phoneNumber !== null ? loggedInUser.phoneNumber : loggedInUser.email,
             to: selectedContact.phoneNumber !== null ? selectedContact.phoneNumber : selectedContact.email,
@@ -95,9 +95,9 @@ function Chat() {
             timestamp: new Date()
         }
         db.collection('messages').doc().set(composedData).then(() => {
-            alert('message sent!')
+            //alert('message sent!')
         }).catch(error => {
-            alert(error)
+            //alert(error)
         })
         setTypedMessage('')
     }
@@ -132,7 +132,7 @@ function Chat() {
             <div className="chat__body" ref={chatContainer} >
 
                 {filteredMassages.map(msg => (
-                    <p className={`chat__message ${msg.message.from === loggedInUser.email ? `chat__receiver` : ''}`}>
+                    <p className={`chat__message ${msg.message.from === loggedInUser.email ? `chat__receiver` : 'chat__sender__border'}`}>
                         {/* <span className="chat__name">
                         Jitendra Gosavi
                     </span> */}
