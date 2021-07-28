@@ -116,6 +116,7 @@ function Chat() {
         })
         //AFTER SENDING AND SAVING TO FIREBASE EMPTYING THE TEXT BOX
         setTypedMessage('')
+        setIsTyping(false)
     }
 
     const loadChatFooter = () => {
@@ -137,11 +138,17 @@ function Chat() {
                         <button type="submit" onClick={e => handleInputText(e)}></button>
                     </form>
                 </div>
-                <Tooltip TransitionComponent={Zoom} placement="top" title='Mic' aria-label='Mic'>
-                    <IconButton>
-                        {!isTyping ? <MicNoneOutlined /> : <SendOutlined />}
-                    </IconButton>
-                </Tooltip>
+                {!isTyping ?
+                    <Tooltip TransitionComponent={Zoom} placement="top" title='Mic' aria-label='Mic'>
+                        <IconButton>
+                            <MicNoneOutlined />
+                        </IconButton>
+                    </Tooltip> :
+                    <Tooltip TransitionComponent={Zoom} placement="top" title='Send' aria-label='Send'>
+                        <IconButton>
+                            <SendOutlined onClick={e => handleInputText(e)} />
+                        </IconButton>
+                    </Tooltip>}
             </div>
         )
     }
