@@ -1,4 +1,4 @@
-import React, { useEffect, } from 'react'
+import React, { useEffect } from 'react'
 import { Button } from '@material-ui/core'
 import './Login.css'
 import firebase from 'firebase'
@@ -12,7 +12,7 @@ function Login() {
     const savedUsers = useSelector(state => state.savedUsers)
 
 
-    //console.log("savedUsers", savedUsers)
+    //FETCHING ALL EXITING USERS AND SAVING TO GLOBAL STATE
     useEffect(() => {
         const unsubscribe = db.collection('users')
             .onSnapshot((snapshot) =>
@@ -26,7 +26,7 @@ function Login() {
         }
     }, [])
 
-
+    //FETCHING ALL THE MESSAGE AND SAVING TO GLOBAL STATE 
     useEffect(() => {
         let unsubscribe = db.collection('messages').orderBy('timestamp', 'asc')
             .onSnapshot(snapshot => (
@@ -40,6 +40,12 @@ function Login() {
         }
     }, [])
 
+    /**
+     * Checking if user already existed to db or not 
+     * @param {String} email 
+     * @param {Object} newUser 
+     * @returns Array
+     */
     const checkIfUserExists = (email, newUser) => {
         //console.log(typeof savedUsers.data, savedUsers.data.length)
         let matchedUser = savedUsers.data.find(user => user.data.email === email)
@@ -50,6 +56,10 @@ function Login() {
             return [false, newUser]
         }
     }
+
+    /**
+     * Authentication popup for google sign in
+     */
     const signIn = () => {
         firebase.auth().signInWithPopup(provider).then(result => {
             // //console.log(result);
@@ -57,7 +67,6 @@ function Login() {
             let [isUserExists, existingUser] = checkIfUserExists(result.user?.email, result.user)
             if (isUserExists) {
                 setLoggedInUser(existingUser)
-
             } else {
                 setLoggedInUser(result.user)
                 db.collection('users').doc().set({
@@ -78,11 +87,15 @@ function Login() {
             //console.log(error)
         })
     }
+
+
+
+
     return (
         <div className="login">
             <div className="login__container">
                 <img src="https://i.pinimg.com/originals/99/0b/7d/990b7d2c2904f8cd9bc884d3eed6d003.png" alt="" />
-                <h2>Sign in to WhatsApp</h2>
+                <h2>Sign in to WhatsApp Web Clone</h2>
                 <Button onClick={signIn}>Sign in with google</Button>
             </div>
         </div>
