@@ -3,7 +3,7 @@
   display: flex;
   background-color: #2a2f32;
   height: 45px;
-  border-right: 1px solid #30373b;
+  /* border-right: 1px solid #30373b; */
   align-items: center;
   justify-content: space-between;
   /* padding: 9px; */
@@ -11,9 +11,14 @@
 }
 
 .sidebar {
-  flex: 0.35;
-  height: 90vh;
+  flex: 0.3;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #131c21;
+  border-right: 1px solid #30373b;
 }
+
 .sidebar__headerRight {
   color: #b1b3b5;
   display: flex;
@@ -38,7 +43,7 @@
   /* justify-content: space-between; */
   padding: 9px;
   border-bottom: 1px solid #30373b;
-  border-right: 1px solid #30373b;
+  /* border-right: 1px solid #30373b; */
 }
 
 .sidebar__searchContainer {
@@ -56,7 +61,7 @@
   font-size: 1.2em;
   padding-left: 12px;
   padding-right: 25px;
-  color: #5a5e61;
+  color: #828689;
 }
 
 .sidebar__searchContainer > input {
@@ -69,12 +74,12 @@
 }
 
 .sidebar__contacts {
-  height: 77vh;
+  /* height: 100%; */
   overflow-y: overlay;
   overflow-x: clip;
   /* overflow: hidden; */
-  border-right: 1px solid #30373b;
-  background: #131c21;
+  /* border-right: 1px solid #30373b; */
+  background-color: #131c21;
 }
 
 .contact_container {
@@ -102,6 +107,8 @@
 .contact__info {
   padding: 15px;
   flex: 1;
+  min-width: 100px;
+  width: 100%;
 }
 
 .contact__name {
@@ -109,7 +116,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 100px;
+  /* width: 100px; */
 }
 .last__msg {
   font-size: small;

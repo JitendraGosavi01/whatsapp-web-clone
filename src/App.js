@@ -5,16 +5,20 @@ import Login from './Components/Login/Login';
 import { useSelector } from 'react-redux';
 
 function App() {
-  const { data, isLoggedIn } = useSelector(state => state.loggedInUser)
-  console.log(data, isLoggedIn)
+  const { isLoggedIn } = useSelector(state => state.loggedInUser)
+  // //console.log(data, isLoggedIn)
   return (
     <div className="app">
-      {!isLoggedIn ? <Login />
-        : <div className="app__body">
+      {!isLoggedIn ? <Login /> :
+        <div className="app__body">
           <Sidebar />
           <Chat />
 
         </div>}
+      {/* <div className="app__body">
+        <Sidebar />
+        <Chat />
+      </div> */}
     </div>
   );
 }
